@@ -2,11 +2,33 @@
 <html>
 <head>
   <title>SignIn</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <%= analytics_init if Rails.env.production? %>
 </head>
 <body>
+
+<nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <% if session['github'] %>
+          <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <%= yield %>
 

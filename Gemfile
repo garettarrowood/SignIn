@@ -45,6 +45,9 @@ group :development do
   gem 'spring'
 end
 
+
+gem "bootstrap-sass", "~> 3.1.1"
+
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-github'
